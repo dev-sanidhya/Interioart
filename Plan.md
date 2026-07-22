@@ -52,6 +52,9 @@ Rebuilt with:
 - Testimonials: removed star ratings (too generic/salesy for this brand), now large italic pull-quotes on a dark section.
 - Nav: switched from mix-blend-mode trick to a proper frosted stone bar that only appears once scrolled past the hero (threshold tied to viewport height in main.js), so it reads correctly against both the dark hero and light body sections.
 
+## Color fix (2026-07-23, later same day)
+User flagged the terracotta accent as "off" and told me to actually think about it rather than guess again. Root cause: I'd invented an unrelated terracotta/rust accent instead of grounding the palette in anything real. Fixed by inspecting InterioArty's *actual live site* computed styles — their real brand CTA color is a deep maroon/wine (`rgb(140,10,36)`, used 20+ times) on warm cream (`rgb(251,246,239)`), with navy as a secondary. Swapped `--accent` to a refined `#7a1530` (their maroon, slightly desaturated for an editorial feel) and warmed `--stone`/`--ink` slightly to sit closer to their actual cream/charcoal. This keeps brand continuity with their existing site while still being a clear step up in execution — lesson: check the client's real brand colors before inventing a palette, don't just chase "premium-looking" hexes in isolation.
+
 ## Next steps
 1. User to import repo into Vercel and set `GROQ_API_KEY` (same key already verified working locally) as an env var.
 2. Deploy, grab the `*.vercel.app` link, send via WhatsApp ahead of the 11:30 AM demo (today).
