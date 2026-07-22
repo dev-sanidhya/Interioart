@@ -33,10 +33,13 @@ Full live WhatsApp + Instagram automation and real CRM integration were ruled ou
 ## Current state
 - Homepage, chatbot widget, serverless chat API, and CRM dashboard all built and visually verified locally (static server via `.claude/launch.json` entry `interioarty-demo`, port 3009).
 - Lead-capture-to-CRM live-update flow tested and confirmed working (toast + stats + card render correctly).
-- Not yet done: push to GitHub remote, deploy to Vercel, add real `GROQ_API_KEY`.
+- Palette/type swapped after feedback that dark+bronze+Fraunces read as a generic AI-template look: now a botanical deep-green (`#12201b`) + sage (`#e8ecde`) + muted forest accent (`#5c8770`) palette, with Instrument Serif (display) + Space Grotesk (body/UI) replacing Fraunces + Inter.
+- Groq API key provided by user and dropped into local `.env` (gitignored, never committed). Verified directly against `api/chat.js` — real responses confirmed grounded in InterioArty's actual services/pricing/VR process, and lead extraction (name/phone/email regex) confirmed working mid-conversation.
+- Caught and fixed a gap: `api/chat.js` had been written locally but never actually committed/pushed in an earlier session — now committed.
+- All commits pushed to `origin main` on github.com/dev-sanidhya/Interioart.
 
 ## Next steps
-1. Push all commits to `origin main` on github.com/dev-sanidhya/Interioart.
-2. User to import repo into Vercel and add `GROQ_API_KEY`.
-3. Walk through demo script in README.md before the 11:30 AM call.
+1. User to import repo into Vercel and set `GROQ_API_KEY` (same key already verified working locally) as an env var.
+2. Deploy, grab the `*.vercel.app` link, send via WhatsApp ahead of the 11:30 AM demo.
+3. Walk through demo script in README.md before the call.
 4. After the call: capture what the client actually reacted to / objected to here for the next session.
