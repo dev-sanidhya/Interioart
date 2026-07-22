@@ -144,12 +144,56 @@
       email: lead.email || '',
       source: 'Website Chatbot',
       time: new Date().toISOString(),
-      transcript: state.messages.slice(-6),
+      transcript: state.messages.slice(),
+      summarizing: true,
     };
-    const existing = JSON.parse(localStorage.getItem('interioarty_leads') || '[]');
-    existing.unshift(record);
-    localStorage.setItem('interioarty_leads', JSON.stringify(existing));
+    saveLead(record);
     if (bc) bc.postMessage(record);
+    summarizeLead(record.id);
+  }
+
+  function saveLead(record) {
+    const existing = JSON.parse(localStorage.getItem('interioarty_leads') || '[]');
+    const idx = existing.findIndex((l) => l.id === record.id);
+    if (idx >= 0) existing[idx] = record;
+    else existing.unshift(record);
+    localStorage.setItem('interioarty_leads', JSON.stringify(existing));
+  }
+
+  async function summarizeLead(id) {
+    try {
+      const res = await fetch('/api/summarize-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: state.messages }),
+      });
+      const ai = await res.json();
+      const existing = JSON.parse(localStorage.getItem('interioarty_leads') || '[]');
+      const record = existing.find((l) => l.id === id);
+      if (!record) return;
+
+      record.name = record.name || ai.name || '';
+      record.phone = record.phone || ai.phone || '';
+      record.email = record.email || ai.email || '';
+      record.projectType = ai.projectType || null;
+      record.bhk = ai.bhk || null;
+      record.budget = ai.budget || null;
+      record.timeline = ai.timeline || null;
+      record.summary = ai.summary || null;
+      record.summarizing = false;
+
+      saveLead(record);
+      if (bc) bc.postMessage(record);
+    } catch (err) {
+      const existing = JSON.parse(localStorage.getItem('interioarty_leads') || '[]');
+      const record = existing.find((l) => l.id === id);
+      if (record) {
+        record.summarizing = false;
+        record.summary = 'AI summary failed — see transcript.';
+        saveLead(record);
+        if (bc) bc.postMessage(record);
+      }
+    }
   }
 
   sendBtn.addEventListener('click', () => sendMessage(inputEl.value));

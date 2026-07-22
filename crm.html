@@ -6,26 +6,62 @@
 <title>InterioArty — Lead Inbox</title>
 <link rel="stylesheet" href="css/style.css" />
 <style>
-  body { cursor: default; }
-  .crm-wrap { max-width: 980px; margin: 0 auto; padding: 140px 6vw 100px; }
-  .crm-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
-  .crm-head h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; }
-  .crm-head p { color: rgba(241,239,231,0.5); margin-top: 10px; }
-  .live-pill { display: flex; align-items: center; gap: 8px; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(241,239,231,0.6); border: 1px solid var(--line-on-dark); padding: 8px 16px; }
-  .live-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #8ba672; animation: pulse 1.6s infinite; }
+  body { cursor: default; background: var(--ink); color: var(--vellum); }
+  .crm-wrap { max-width: 1080px; margin: 0 auto; padding: 150px 6vw 120px; }
+
+  .crm-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--sp-4); border-bottom: 1px solid var(--line-on-ink); padding-bottom: var(--sp-3); }
+  .crm-head h1 { font-family: var(--serif); font-weight: 400; font-size: var(--t-h1); }
+  .crm-head p { color: rgba(236,230,216,0.5); margin-top: var(--sp-1); font-family: var(--mono); font-size: 0.78rem; }
+  .live-pill { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.08em; text-transform: uppercase; color: rgba(236,230,216,0.6); }
+  .live-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #9fae86; animation: pulse 1.6s infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .lead-card { border: 1px solid var(--line-on-dark); padding: 24px 26px; margin-bottom: 14px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 20px; align-items: center; opacity: 0; transform: translateY(-10px); animation: dropin 0.5s ease forwards; }
+
+  .stats-row { display: flex; gap: var(--sp-5); margin-bottom: var(--sp-4); }
+  .stat b { display: block; font-family: var(--serif); font-size: 1.8rem; font-weight: 400; }
+  .stat span { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(236,230,216,0.45); }
+
+  .lead-card { border-top: 1px solid var(--line-on-ink); opacity: 0; transform: translateY(-8px); animation: dropin 0.6s ease forwards; }
+  .lead-list .lead-card:last-child { border-bottom: 1px solid var(--line-on-ink); }
   @keyframes dropin { to { opacity: 1; transform: translateY(0); } }
-  .lead-field label { display: block; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(241,239,231,0.4); margin-bottom: 6px; }
-  .lead-field span { font-size: 0.95rem; }
-  .lead-badge { background: var(--accent); color: var(--stone); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.03em; padding: 6px 14px; white-space: nowrap; }
-  .empty-state { text-align: center; padding: 100px 20px; color: rgba(241,239,231,0.4); border: 1px dashed var(--line-on-dark); }
-  .empty-state b { display: block; font-family: 'Newsreader', serif; font-style: italic; font-size: 1.4rem; color: var(--stone); margin-bottom: 10px; font-weight: 400; }
-  .toast { position: fixed; top: 24px; right: 24px; background: var(--stone); color: var(--ink); padding: 16px 22px; font-size: 0.88rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); transform: translateX(120%); transition: transform 0.4s var(--ease); z-index: 300; }
+
+  .lead-row {
+    padding: var(--sp-3) 0; display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto auto;
+    gap: var(--sp-2); align-items: center; cursor: pointer;
+  }
+  .lead-field label { display: block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(236,230,216,0.4); margin-bottom: 5px; }
+  .lead-field span { font-size: 0.92rem; }
+  .lead-badge { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--blueprint-soft); white-space: nowrap; }
+  .lead-badge.pending { color: var(--brass); }
+  .lead-chevron { font-family: var(--mono); color: rgba(236,230,216,0.4); transition: transform 0.4s var(--ease); }
+  .lead-card.open .lead-chevron { transform: rotate(90deg); }
+
+  .lead-detail { max-height: 0; overflow: hidden; transition: max-height 0.6s var(--ease); }
+  .lead-card.open .lead-detail { max-height: 900px; }
+  .lead-detail-inner { padding: 0 0 var(--sp-4); display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+
+  .detail-block label { display: block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(236,230,216,0.4); margin-bottom: 8px; }
+  .detail-block .summary-text { font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.5; color: var(--vellum); }
+  .detail-specs { margin-top: var(--sp-3); display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); }
+  .detail-specs .dim { color: var(--blueprint-soft); }
+  .detail-specs .dim::before { background: var(--blueprint-soft); }
+
+  .transcript { max-height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 8px; }
+  .t-msg { font-size: 0.84rem; line-height: 1.5; padding: 8px 12px; }
+  .t-msg.user { background: rgba(236,230,216,0.08); }
+  .t-msg.bot { background: transparent; border: 1px solid var(--line-on-ink); }
+  .t-role { display: block; font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(236,230,216,0.4); margin-bottom: 4px; }
+
+  .empty-state { text-align: center; padding: var(--sp-6) 20px; color: rgba(236,230,216,0.4); border-top: 1px solid var(--line-on-ink); }
+  .empty-state b { display: block; font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--vellum); margin-bottom: 10px; font-weight: 400; }
+  .toast { position: fixed; top: 24px; right: 24px; background: var(--vellum); color: var(--ink); padding: 14px 20px; font-family: var(--mono); font-size: 0.78rem; transform: translateX(140%); transition: transform 0.6s var(--ease); z-index: 300; }
   .toast.show { transform: translateX(0); }
-  .stats-row { display: flex; gap: 40px; margin-bottom: 40px; }
-  .stat b { display: block; font-family: 'Newsreader', serif; font-size: 2rem; font-weight: 400; }
-  .stat span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(241,239,231,0.45); }
+
+  @media (max-width: 800px) {
+    .lead-row { grid-template-columns: 1fr 1fr auto; }
+    .lead-row .lead-field:nth-child(3), .lead-row .lead-field:nth-child(4) { display: none; }
+    .lead-detail-inner { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -34,7 +70,7 @@
   <div class="crm-head">
     <div>
       <h1 class="serif">Lead Inbox</h1>
-      <p>Every conversation Arty has qualified, landing here in real time.</p>
+      <p>Every conversation Arty has qualified, summarized by AI, landing here in real time.</p>
     </div>
     <div class="live-pill"><span class="dot"></span> Live</div>
   </div>
@@ -45,10 +81,10 @@
     <div class="stat"><b>&lt; 1 min</b><span>Avg. Reply Time</span></div>
   </div>
 
-  <div id="leadList"></div>
+  <div id="leadList" class="lead-list"></div>
 </div>
 
-<div class="toast" id="toast">🔔 New lead captured by Arty</div>
+<div class="toast" id="toast">New lead captured by Arty</div>
 
 <script src="js/crm.js"></script>
 </body>
