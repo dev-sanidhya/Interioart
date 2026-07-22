@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --ink: #14120f;
-  --paper: #f4f0e9;
-  --paper-dim: #e8e2d6;
-  --accent: #b98a4e;
-  --accent-soft: #d9c3a0;
-  --line: rgba(20, 18, 15, 0.12);
+  --ink: #12201b;
+  --paper: #e8ecde;
+  --paper-dim: #dbe0cd;
+  --accent: #5c8770;
+  --accent-soft: #a9c4b3;
+  --accent-dark: #3c5c4c;
+  --line: rgba(232, 236, 222, 0.14);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -21,7 +22,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   background: var(--ink);
   color: var(--paper);
   overflow-x: hidden;
@@ -29,7 +30,7 @@ body {
 }
 
 .serif {
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
 }
 
 a {
@@ -85,7 +86,7 @@ img {
 }
 
 .nav-logo {
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1.15rem;
   letter-spacing: 0.02em;
   color: var(--paper);
@@ -159,7 +160,7 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 18, 15, 0.35) 0%, rgba(20, 18, 15, 0.15) 40%, rgba(20, 18, 15, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(18, 32, 27, 0.35) 0%, rgba(18, 32, 27, 0.15) 40%, rgba(18, 32, 27, 0.92) 100%);
 }
 
 .hero-content {
@@ -205,7 +206,7 @@ img {
   max-width: 480px;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: rgba(244, 240, 233, 0.72);
+  color: rgba(232, 236, 222, 0.72);
   font-weight: 300;
 }
 
@@ -215,14 +216,14 @@ img {
   justify-content: space-between;
   margin-top: 56px;
   padding-top: 28px;
-  border-top: 1px solid rgba(244, 240, 233, 0.18);
+  border-top: 1px solid rgba(232, 236, 222, 0.18);
 }
 
 .hero-scroll {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(244, 240, 233, 0.5);
+  color: rgba(232, 236, 222, 0.5);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -231,7 +232,7 @@ img {
 .scroll-line {
   width: 1px;
   height: 40px;
-  background: rgba(244, 240, 233, 0.3);
+  background: rgba(232, 236, 222, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -260,7 +261,7 @@ img {
 
 .hero-stat b {
   display: block;
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1.8rem;
   font-weight: 400;
 }
@@ -269,7 +270,7 @@ img {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(244, 240, 233, 0.55);
+  color: rgba(232, 236, 222, 0.55);
 }
 
 /* ---------- Section shells ---------- */
@@ -321,10 +322,10 @@ section {
 }
 
 .marquee span {
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-size: 1.3rem;
-  color: rgba(244, 240, 233, 0.4);
+  color: rgba(232, 236, 222, 0.4);
   display: flex;
   align-items: center;
   gap: 40px;
@@ -354,7 +355,7 @@ section {
   margin-top: 32px;
   font-size: 1.05rem;
   line-height: 1.75;
-  color: rgba(244, 240, 233, 0.68);
+  color: rgba(232, 236, 222, 0.68);
   font-weight: 300;
   max-width: 46ch;
 }
@@ -424,18 +425,18 @@ section {
 .service-num {
   font-size: 0.85rem;
   color: var(--accent);
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
 }
 
 .service-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: clamp(1.4rem, 3vw, 2.1rem);
   font-weight: 400;
 }
 
 .service-desc {
   font-size: 0.92rem;
-  color: rgba(244, 240, 233, 0.55);
+  color: rgba(232, 236, 222, 0.55);
   font-weight: 300;
   max-width: 36ch;
 }
@@ -477,7 +478,7 @@ section {
   align-items: center;
 }
 
-.vr-section .eyebrow { color: #8a5a24; }
+.vr-section .eyebrow { color: var(--accent-dark); }
 
 .vr-title {
   font-size: clamp(2rem, 4.2vw, 3.4rem);
@@ -487,7 +488,7 @@ section {
 
 .vr-title em {
   font-style: italic;
-  color: #8a5a24;
+  color: var(--accent-dark);
   font-weight: 300;
 }
 
@@ -495,7 +496,7 @@ section {
   margin-top: 24px;
   font-size: 1.02rem;
   line-height: 1.7;
-  color: rgba(20, 18, 15, 0.65);
+  color: rgba(18, 32, 27, 0.65);
   max-width: 48ch;
   font-weight: 300;
 }
@@ -560,7 +561,7 @@ section {
   bottom: 20px;
   left: 20px;
   right: 20px;
-  background: rgba(20, 18, 15, 0.85);
+  background: rgba(18, 32, 27, 0.85);
   backdrop-filter: blur(10px);
   border-radius: 14px;
   padding: 16px 18px;
@@ -571,7 +572,7 @@ section {
 
 .vr-badge b {
   display: block;
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1.4rem;
 }
 
@@ -644,7 +645,7 @@ section {
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 36px 32px;
-  background: rgba(244, 240, 233, 0.03);
+  background: rgba(232, 236, 222, 0.03);
 }
 
 .testi-stars {
@@ -654,7 +655,7 @@ section {
 }
 
 .testi-quote {
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.4;
@@ -663,7 +664,7 @@ section {
 
 .testi-body {
   font-size: 0.9rem;
-  color: rgba(244, 240, 233, 0.55);
+  color: rgba(232, 236, 222, 0.55);
   line-height: 1.6;
   font-weight: 300;
 }
@@ -673,7 +674,7 @@ section {
   font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(244, 240, 233, 0.4);
+  color: rgba(232, 236, 222, 0.4);
 }
 
 /* ---------- FAQ ---------- */
@@ -696,7 +697,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1.15rem;
   cursor: pointer;
   gap: 20px;
@@ -723,7 +724,7 @@ section {
   padding-bottom: 28px;
   font-size: 0.95rem;
   line-height: 1.7;
-  color: rgba(244, 240, 233, 0.6);
+  color: rgba(232, 236, 222, 0.6);
   font-weight: 300;
   max-width: 60ch;
 }
@@ -748,7 +749,7 @@ section {
 .cta-sub {
   margin-top: 24px;
   font-size: 1.05rem;
-  color: rgba(244, 240, 233, 0.55);
+  color: rgba(232, 236, 222, 0.55);
   font-weight: 300;
 }
 
@@ -792,7 +793,7 @@ footer {
 }
 
 .footer-logo {
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1.6rem;
 }
 
@@ -805,14 +806,14 @@ footer {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(244, 240, 233, 0.4);
+  color: rgba(232, 236, 222, 0.4);
   margin-bottom: 16px;
 }
 
 .footer-col a, .footer-col p {
   display: block;
   font-size: 0.88rem;
-  color: rgba(244, 240, 233, 0.7);
+  color: rgba(232, 236, 222, 0.7);
   margin-bottom: 10px;
 }
 
@@ -822,7 +823,7 @@ footer {
   padding-top: 24px;
   border-top: 1px solid var(--line);
   font-size: 0.78rem;
-  color: rgba(244, 240, 233, 0.35);
+  color: rgba(232, 236, 222, 0.35);
 }
 
 /* ---------- Reveal animation base ---------- */
@@ -847,7 +848,7 @@ footer {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(185, 138, 78, 0.35);
+  box-shadow: 0 12px 30px rgba(92, 135, 112, 0.35);
   transition: transform 0.3s var(--ease);
 }
 
@@ -902,20 +903,20 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1rem;
   color: var(--ink);
 }
 
 .chat-head-info b {
-  font-family: 'Fraunces', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1rem;
   display: block;
 }
 
 .chat-head-info span {
   font-size: 0.72rem;
-  color: rgba(244, 240, 233, 0.5);
+  color: rgba(232, 236, 222, 0.5);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -926,7 +927,7 @@ footer {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #6cd67a;
+  background: #e2a640;
 }
 
 .chat-messages {
@@ -970,7 +971,7 @@ footer {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(20,18,15,0.4);
+  background: rgba(18,32,27,0.4);
   animation: typingdot 1.2s infinite ease-in-out;
 }
 
@@ -991,7 +992,7 @@ footer {
 
 .chip {
   font-size: 0.76rem;
-  border: 1px solid rgba(20,18,15,0.15);
+  border: 1px solid rgba(18,32,27,0.15);
   padding: 8px 13px;
   border-radius: 100px;
   cursor: pointer;
@@ -1010,7 +1011,7 @@ footer {
   align-items: center;
   gap: 10px;
   padding: 14px;
-  border-top: 1px solid rgba(20,18,15,0.1);
+  border-top: 1px solid rgba(18,32,27,0.1);
   background: var(--paper);
 }
 
@@ -1021,7 +1022,7 @@ footer {
   padding: 13px 16px;
   border-radius: 100px;
   font-size: 0.88rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   color: var(--ink);
 }
 
