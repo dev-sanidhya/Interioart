@@ -1,8 +1,8 @@
 /* ==========================================================================
-   InterioArty — design system
+   InterioArty: design system
    One color throughout: white background, near-black text. No accent hue,
-   no alternating section backgrounds — hierarchy comes from scale, weight
-   and real interaction (tabs, a drag compare, a scroll carousel), not color.
+   no alternating section backgrounds. Hierarchy comes from scale, weight
+   and real interaction (a cursor-pan VR viewer, a scroll carousel), not color.
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
@@ -249,47 +249,36 @@ section { position: relative; background: var(--vellum); color: var(--ink); }
 }
 
 /* ==========================================================================
-   See The Difference — a real drag compare slider
+   VR Walkthrough Preview — move the cursor to look around, the actual
+   sensation a VR walkthrough gives, not a before/after render comparison.
    ========================================================================== */
-.compare-wrap { width: 100%; padding: var(--sp-4) 2.5vw 0; }
+.vr-pan-wrap { width: 100%; padding: var(--sp-4) 2.5vw 0; }
 
-.compare {
+.vr-pan {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 21/9;
   overflow: hidden;
-  cursor: ew-resize;
-  user-select: none;
+  background: var(--ink);
+  cursor: pointer;
 }
-.compare-before, .compare-after {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  filter: grayscale(50%) contrast(1.05);
+.vr-pan-img {
+  position: absolute;
+  top: 0; left: 50%;
+  height: 100%;
+  width: 160%;
+  max-width: none;
+  object-fit: cover;
+  transform: translateX(-50%);
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  filter: grayscale(35%) contrast(1.05);
 }
-.compare-after {
-  clip-path: inset(0 50% 0 0);
-  will-change: clip-path;
-}
-.compare-handle {
-  position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
-  background: var(--vellum); pointer-events: none; z-index: 3;
-  transform: translateX(-1px);
-}
-.compare-handle::after {
-  content: '↔'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 40px; height: 40px; border-radius: 50%; background: var(--vellum); color: var(--ink);
-  display: flex; align-items: center; justify-content: center; font-size: 1rem;
-}
-.compare-label {
-  position: absolute; bottom: var(--sp-2); z-index: 3;
-  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase;
-  color: var(--vellum); background: rgba(0,0,0,0.5); padding: 5px 9px; pointer-events: none;
-}
-.compare-label.left { left: var(--sp-2); }
-.compare-label.right { right: var(--sp-2); }
-.compare-range {
-  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
-  opacity: 0; cursor: ew-resize; z-index: 4;
-  -webkit-appearance: none;
+.vr-pan-tag {
+  position: absolute;
+  bottom: var(--sp-2); left: var(--sp-2);
+  font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--vellum); background: rgba(0,0,0,0.5); padding: 6px 10px;
+  pointer-events: none;
 }
 
 .vr-specs {

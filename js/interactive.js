@@ -1,17 +1,29 @@
 (function () {
-  // ---- Before/after compare slider ----
-  const range = document.getElementById('compareRange');
-  const afterImg = document.getElementById('compareAfter');
-  const handle = document.getElementById('compareHandle');
+  // ---- VR walkthrough pan viewer: move the cursor to look around ----
+  const vrPan = document.getElementById('vrPan');
+  const vrPanImg = document.getElementById('vrPanImg');
 
-  function updateCompare(value) {
-    if (afterImg) afterImg.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
-    if (handle) handle.style.left = value + '%';
-  }
+  if (vrPan && vrPanImg) {
+    const panTo = (clientX) => {
+      const rect = vrPan.getBoundingClientRect();
+      const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      const imgWidth = vrPanImg.getBoundingClientRect().width;
+      const maxOffset = (imgWidth - rect.width) / 2;
+      const offset = (ratio - 0.5) * 2 * maxOffset;
+      vrPanImg.style.transform = `translateX(calc(-50% - ${offset}px))`;
+    };
 
-  if (range) {
-    updateCompare(range.value);
-    range.addEventListener('input', (e) => updateCompare(e.target.value));
+    vrPan.addEventListener('mousemove', (e) => panTo(e.clientX));
+    vrPan.addEventListener('mouseleave', () => {
+      vrPanImg.style.transform = 'translateX(-50%)';
+    });
+    vrPan.addEventListener(
+      'touchmove',
+      (e) => {
+        if (e.touches[0]) panTo(e.touches[0].clientX);
+      },
+      { passive: true }
+    );
   }
 
   // ---- Testimonial carousel ----

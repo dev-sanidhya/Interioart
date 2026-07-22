@@ -112,17 +112,13 @@
   <div class="frame">
     <span class="tag">Virtual Reality Interiors</span>
     <h2 class="section-h serif" data-reveal>See it, <em>before it's built.</em></h2>
-    <p class="section-lead" data-reveal>Drag to compare a concept render against the VR walkthrough your design team actually builds: the version you approve before a single wall moves.</p>
+    <p class="section-lead" data-reveal>Move your cursor to look around a walkthrough your design team builds in VR: the version you approve before a single wall moves.</p>
   </div>
 
-  <div class="compare-wrap" data-reveal>
-    <div class="compare" id="compareSlider">
-      <img class="compare-before" src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1600&q=80" alt="Concept render" />
-      <img class="compare-after" id="compareAfter" src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1600&q=80" alt="VR walkthrough" />
-      <div class="compare-handle" id="compareHandle"></div>
-      <span class="compare-label left">Concept</span>
-      <span class="compare-label right">VR Walkthrough</span>
-      <input type="range" min="0" max="100" value="50" class="compare-range" id="compareRange" aria-label="Compare concept and VR walkthrough" />
+  <div class="vr-pan-wrap" data-reveal>
+    <div class="vr-pan" id="vrPan">
+      <img class="vr-pan-img" id="vrPanImg" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=80" alt="VR walkthrough preview of a living room" />
+      <span class="vr-pan-tag mono">Move to look around</span>
     </div>
   </div>
 
