@@ -1,0 +1,9 @@
+{
+  "name": "interioart-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "InterioArty website redesign + AI chatbot demo",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
