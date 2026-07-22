@@ -104,6 +104,14 @@ Response:
 - Color: removed the alternating dark/light section rhythm entirely. Every section past the hero is now the same flat white — the hero itself keeps its photography (not a second flat color, so left alone) but nothing else uses a second background color.
 - Caught and fixed a real bug during build: the compare slider's first implementation resized a width-percentage wrapper, which squishes the image instead of clipping it — switched to `clip-path`. Also found that `scroll-snap-type` cancels animated `scrollLeft` changes (both native smooth-scroll and GSAP tweens got snapped back mid-flight) — carousel buttons now jump instantly instead, which sidesteps the conflict entirely.
 
+## Structure refinement + cleanup (2026-07-23, later still)
+User pushed for a second, deeper rebuild: not another visual pass, but genuinely new UI patterns drawn from the reference sites' actual UX logic (not just look), a reconsidered information architecture, fresh copy, and strict one-color compliance. Delivered:
+
+- Replaced the click-through tab selector (The Collection) with four full-width alternating image/text modules, one per service. Rationale: a tab UI hides three of four services behind a click, which undercuts "each collection gets real presence" (the actual lesson from how Rolex presents its product lines, each one gets its own scroll-length module, nothing is hidden behind an interaction). Removed the now-dead tab-switching JS from `interactive.js` and its CSS.
+- Audited for genuine one-color violations rather than assuming compliance: found a green status dot (`#6bbf6b`) in both the chatbot header and the CRM "Live" pill, left over from before the monochrome system existed. Fixed both to `currentColor`.
+- Full em-dash sweep across the entire project (index.html, crm.html, all JS, both API system prompts, README, code comments), per the standing global formatting rule this project had been quietly violating for the whole session. Also added an explicit "never use em dashes" instruction to `api/chat.js`'s system prompt so live Groq-generated replies do not introduce them either, since that's free-generated text outside direct control.
+- Rewrote README's demo script and file list, which still described the old Services/Gallery/Testimonials section names and were actively wrong against the current structure.
+
 ## Next steps
 1. User to import repo into Vercel and set `GROQ_API_KEY` (same key already verified working locally) as an env var.
 2. Deploy, grab the `*.vercel.app` link, send via WhatsApp ahead of the 11:30 AM demo (today).
