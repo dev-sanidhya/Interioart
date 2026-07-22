@@ -78,6 +78,11 @@ Also caught mid-fix: an earlier session's `package.json`/`vercel.json` bug fixes
 
 Verification note: the local screenshot/browser-pane tool has been non-functional for this entire session (times out with "pane not displayed"). All verification this round was done via computed-style checks, layout bounding-rect checks, console-error checks, and live DOM interaction tests (FAQ click, chat launcher click) — not visual screenshots. Flagged to user; recommend they eyeball it directly before the demo.
 
+## Revert + lead-capture fix (2026-07-23, later still)
+User rejected the first-principles rebuild and asked to revert two iterations back. Ambiguous by raw commit count (one intermediate commit was a pure color swap on identical structure), so asked user to pick explicitly between the two candidates — they chose the terracotta+Newsreader/Archivo editorial-spread version (commit `d78b19a`), not the maroon fix layered on top of it. Restored `css/style.css`, `index.html`, `js/main.js`, `crm.html`, `js/chatbot.js` to that commit's content via `git show d78b19a:<path>`.
+
+Also fixed a real bug reported alongside the revert: a qualified-sounding chat conversation produced no CRM entry. Root cause in `api/chat.js`'s `extractLead` — it only matched a strict contiguous-digit phone regex and scanned *all* messages including the assistant's own, risking false positives on InterioArty's own listed number. Fixed by: scoping regex extraction to user-authored messages only, widening the phone regex to tolerate spaced/dashed formats, adding simple name extraction ("I'm X" / "my name is X"), and adding a `qualified` flag driven by whether the assistant's reply actually contains its own confirmation phrase. Frontend (`chatbot.js`) now fires a lead on phone OR email OR name OR qualified — deliberately over-captures rather than risk another silent miss during the live demo. This fix was kept on top of the reverted files (had to manually reapply since `chatbot.js`/`crm.js` were also part of the revert).
+
 ## Next steps
 1. User to import repo into Vercel and set `GROQ_API_KEY` (same key already verified working locally) as an env var.
 2. Deploy, grab the `*.vercel.app` link, send via WhatsApp ahead of the 11:30 AM demo (today).
