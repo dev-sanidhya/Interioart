@@ -32,7 +32,7 @@
     listEl.innerHTML = leads
       .map(
         (l) => `
-      <div class="lead-card">
+      <div class="lead-row">
         <div class="lead-field"><label>Contact</label><span>${l.phone || l.email || 'Unknown'}</span></div>
         <div class="lead-field"><label>Source</label><span>${l.source}</span></div>
         <div class="lead-field"><label>Captured</label><span>${timeAgo(l.time)}</span></div>

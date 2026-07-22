@@ -37,18 +37,17 @@ gsap.to('.hero-bg img', {
   },
 });
 
-// Reveal-on-scroll for every [data-reveal] element
-document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+// Reveal-on-scroll — slow and understated, not a stagger effect
+document.querySelectorAll('[data-reveal]').forEach((el) => {
   gsap.to(el, {
     opacity: 1,
     y: 0,
-    duration: 1.1,
-    ease: 'power3.out',
+    duration: 1.8,
+    ease: 'power2.out',
     scrollTrigger: {
       trigger: el,
-      start: 'top 88%',
+      start: 'top 92%',
     },
-    delay: (i % 4) * 0.05,
   });
 });
 

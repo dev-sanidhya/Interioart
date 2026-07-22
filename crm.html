@@ -6,26 +6,27 @@
 <title>InterioArty — Lead Inbox</title>
 <link rel="stylesheet" href="css/style.css" />
 <style>
-  body { cursor: default; }
-  .crm-wrap { max-width: 980px; margin: 0 auto; padding: 140px 6vw 100px; }
-  .crm-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
-  .crm-head h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; }
-  .crm-head p { color: rgba(247,241,231,0.5); margin-top: 10px; }
-  .live-pill { display: flex; align-items: center; gap: 8px; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,241,231,0.6); border: 1px solid var(--line-on-dark); padding: 8px 16px; }
-  .live-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #8ba672; animation: pulse 1.6s infinite; }
+  body { cursor: default; background: var(--ink); color: var(--bone); }
+  .crm-wrap { max-width: 980px; margin: 0 auto; padding: 160px 7vw 120px; }
+  .crm-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--sp-5); border-bottom: 1px solid var(--line-on-ink); padding-bottom: var(--sp-4); }
+  .crm-head h1 { font-family: var(--serif); font-weight: 400; font-size: var(--t-h1); }
+  .crm-head p { color: rgba(245,242,234,0.5); margin-top: var(--sp-1); }
+  .live-pill { display: flex; align-items: center; gap: 8px; font-size: var(--t-label); letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,234,0.6); }
+  .live-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #9fae86; animation: pulse 1.6s infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .lead-card { border: 1px solid var(--line-on-dark); padding: 24px 26px; margin-bottom: 14px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 20px; align-items: center; opacity: 0; transform: translateY(-10px); animation: dropin 0.5s ease forwards; }
+  .lead-row { border-top: 1px solid var(--line-on-ink); padding: var(--sp-3) 0; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: var(--sp-3); align-items: center; opacity: 0; transform: translateY(-8px); animation: dropin 0.6s ease forwards; }
+  .lead-list .lead-row:last-child { border-bottom: 1px solid var(--line-on-ink); }
   @keyframes dropin { to { opacity: 1; transform: translateY(0); } }
-  .lead-field label { display: block; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,241,231,0.4); margin-bottom: 6px; }
+  .lead-field label { display: block; font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(245,242,234,0.4); margin-bottom: 6px; }
   .lead-field span { font-size: 0.95rem; }
-  .lead-badge { background: var(--accent); color: var(--stone); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.03em; padding: 6px 14px; white-space: nowrap; }
-  .empty-state { text-align: center; padding: 100px 20px; color: rgba(247,241,231,0.4); border: 1px dashed var(--line-on-dark); }
-  .empty-state b { display: block; font-family: 'Newsreader', serif; font-style: italic; font-size: 1.4rem; color: var(--stone); margin-bottom: 10px; font-weight: 400; }
-  .toast { position: fixed; top: 24px; right: 24px; background: var(--stone); color: var(--ink); padding: 16px 22px; font-size: 0.88rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); transform: translateX(120%); transition: transform 0.4s var(--ease); z-index: 300; }
+  .lead-badge { font-family: var(--serif); font-style: italic; color: var(--accent-soft); font-size: 0.9rem; white-space: nowrap; }
+  .empty-state { text-align: center; padding: var(--sp-7) 20px; color: rgba(245,242,234,0.4); border-top: 1px solid var(--line-on-ink); }
+  .empty-state b { display: block; font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: var(--bone); margin-bottom: 10px; font-weight: 400; }
+  .toast { position: fixed; top: 24px; right: 24px; background: var(--bone); color: var(--ink); padding: 14px 20px; font-size: 0.86rem; transform: translateX(140%); transition: transform 0.6s var(--ease); z-index: 300; }
   .toast.show { transform: translateX(0); }
-  .stats-row { display: flex; gap: 40px; margin-bottom: 40px; }
-  .stat b { display: block; font-family: 'Newsreader', serif; font-size: 2rem; font-weight: 400; }
-  .stat span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(247,241,231,0.45); }
+  .stats-row { display: flex; gap: var(--sp-5); margin-bottom: var(--sp-5); }
+  .stat b { display: block; font-family: var(--serif); font-size: 1.8rem; font-weight: 400; }
+  .stat span { font-size: var(--t-label); text-transform: uppercase; letter-spacing: 0.06em; color: rgba(245,242,234,0.45); }
 </style>
 </head>
 <body>
@@ -45,10 +46,10 @@
     <div class="stat"><b>&lt; 1 min</b><span>Avg. Reply Time</span></div>
   </div>
 
-  <div id="leadList"></div>
+  <div id="leadList" class="lead-list"></div>
 </div>
 
-<div class="toast" id="toast">🔔 New lead captured by Arty</div>
+<div class="toast" id="toast">New lead captured by Arty</div>
 
 <script src="js/crm.js"></script>
 </body>
