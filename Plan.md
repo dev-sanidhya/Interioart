@@ -55,6 +55,29 @@ Rebuilt with:
 ## Color fix (2026-07-23, later same day)
 User flagged the terracotta accent as "off" and told me to actually think about it rather than guess again. Root cause: I'd invented an unrelated terracotta/rust accent instead of grounding the palette in anything real. Fixed by inspecting InterioArty's *actual live site* computed styles — their real brand CTA color is a deep maroon/wine (`rgb(140,10,36)`, used 20+ times) on warm cream (`rgb(251,246,239)`), with navy as a secondary. Swapped `--accent` to a refined `#7a1530` (their maroon, slightly desaturated for an editorial feel) and warmed `--stone`/`--ink` slightly to sit closer to their actual cream/charcoal. This keeps brand continuity with their existing site while still being a clear step up in execution — lesson: check the client's real brand colors before inventing a palette, don't just chase "premium-looking" hexes in isolation.
 
+## First-principles redesign (2026-07-23, later still — same day)
+User rejected the incremental-patching approach entirely: still felt like an AI-generated template, too many generic/equal-weight sections, still reminiscent of Aperture, typography lacking personality. Explicit instruction: redesign from first principles, don't reskin. Full brief covered content strategy, type, color, layout, imagery, cards/shadows, animation pacing, and code quality — not just visuals.
+
+Content decisions (question every section, per the brief):
+- **Deleted**: the scrolling marquee ticker (pure SaaS-landing-page cliché).
+- **Merged**: About + the old numbered 4-step process list into one "Statement" section — a single editorial line of copy, with the process folded into a quiet inline credits-style row instead of a bordered list.
+- **Collapsed**: four repeated image+text service "spreads" (equal visual weight, felt templated) into one quiet typographic index (service names only, no photo per row) plus a single large signature photograph — creates actual hierarchy instead of four identical blocks.
+- **Rebuilt**: VR section as full-bleed edge-to-edge photography with a plain caption block below (no card, no floating stat badge).
+- **Rebuilt**: gallery from a uniform 6-image grid to two asymmetric plates (different aspect ratios, different sizes).
+- **Rebuilt**: testimonials from a 3-column bordered card grid to one full-width pull-quote at a time, each with real vertical space around it.
+
+System decisions:
+- Typography: Bodoni Moda (didone display serif — genuinely different personality from every previous serif tried, real editorial/fashion pedigree, not a common "AI template" font) + Switzer via Fontshare (quiet neutral grotesque, higher-quality feel than Inter/Space Grotesk/Archivo, uncommon enough to not read as generic). Confirmed both @import URLs resolve (200) before committing.
+- Color: kept the neutral bone/ink base and the brand-grounded maroon accent from the previous fix, but reduced the accent to near-invisible use (eyebrow labels, one italic word, thin underlines) rather than painting it across buttons/badges — "colors should disappear behind the content" per brief.
+- Full CSS rewrite (not patched) — new spacing scale (`--sp-1` … `--sp-8`) and fluid type scale (`--t-*` via clamp) as actual design tokens, ~35% smaller stylesheet, verified zero orphaned classes after the rewrite (grepped class defs against HTML/JS usage, removed 3 that were genuinely unused).
+- Reveal animation duration increased 1.1s → 1.8s, stagger removed — "slow, elegant, barely noticeable" per brief. Hero motion (Lenis smooth scroll, GSAP parallax) left untouched as explicitly instructed.
+- Nav CTA and all buttons converted from filled/bordered pills to plain underlined text links — "understated buttons... no flashy hover effects."
+- Chat launcher restyled from a circular icon-only SaaS bubble to a rectangular tab with a serif-italic "Ask Arty" label, matching the editorial system instead of looking like a bolted-on widget.
+
+Also caught mid-fix: an earlier session's `package.json`/`vercel.json` bug fixes (removing `vercel dev` self-recursion, fixing an invalid `functions.runtime` value) had been made locally but never actually committed — folded into this push.
+
+Verification note: the local screenshot/browser-pane tool has been non-functional for this entire session (times out with "pane not displayed"). All verification this round was done via computed-style checks, layout bounding-rect checks, console-error checks, and live DOM interaction tests (FAQ click, chat launcher click) — not visual screenshots. Flagged to user; recommend they eyeball it directly before the demo.
+
 ## Next steps
 1. User to import repo into Vercel and set `GROQ_API_KEY` (same key already verified working locally) as an env var.
 2. Deploy, grab the `*.vercel.app` link, send via WhatsApp ahead of the 11:30 AM demo (today).
