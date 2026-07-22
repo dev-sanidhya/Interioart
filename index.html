@@ -14,9 +14,9 @@
 <nav class="nav" id="nav">
   <div class="nav-logo">InterioArty</div>
   <ul class="nav-links">
-    <li><a href="#work">Studio</a></li>
+    <li><a href="#work">Collection</a></li>
     <li><a href="#vr">VR Design</a></li>
-    <li><a href="#gallery">Work</a></li>
+    <li><a href="#case">Case Study</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Enquire</a>
@@ -41,79 +41,51 @@
   </div>
 </section>
 
-<!-- Statement — the abstract move: an oversized image and oversized type sharing the same frame -->
-<section class="statement on-vellum">
-  <div class="statement-image marks" data-reveal>
-    <span class="mk-tr"></span><span class="mk-br"></span>
-    <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1600&q=80" alt="InterioArty designed interior detail" />
-  </div>
+<!-- The Collection — an interactive selector, not a static list -->
+<section class="pad-lg" id="work">
   <div class="frame">
-    <div class="statement-text">
-      <span class="tag statement-tag">Creativity — Integrity — Innovation</span>
-      <p class="statement-line serif" data-reveal>We design homes the way you'll actually <em>live in them.</em></p>
-      <p class="statement-copy" data-reveal>A consultation to understand your space and budget. A virtual plan you walk through before anything is built. Materials sourced to match exactly what you approved.</p>
-      <div class="statement-dims" data-reveal>
-        <span class="dim">Consultation</span>
-        <span class="dim">VR Sign-off</span>
-        <span class="dim">Sourcing</span>
-        <span class="dim">Handover</span>
+    <span class="tag">The Collection</span>
+    <h2 class="section-h serif" data-reveal>One studio, <em>four disciplines.</em></h2>
+
+    <div class="ctabs" role="tablist" data-reveal>
+      <button class="ctab active" data-key="home">Full Home</button>
+      <button class="ctab" data-key="modular">Modular</button>
+      <button class="ctab" data-key="office">Office</button>
+      <button class="ctab" data-key="reno">Renovation</button>
+    </div>
+
+    <div class="cstage" data-reveal>
+      <div class="cstage-media">
+        <img id="cImg" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80" alt="Full home interior" />
+      </div>
+      <div class="cstage-copy">
+        <p id="cText">Turnkey packages covering every room — planned, sourced and delivered end to end, with nothing left for you to chase.</p>
+        <span id="cSpec" class="dim">Type — Residential</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Services — a plain index, categories not a sequence -->
-<section class="pad-md on-vellum" id="work">
+<!-- See The Difference — a real interactive slider, not a description -->
+<section class="pad-lg" id="vr">
   <div class="frame">
-    <span class="tag">What We Do</span>
-    <div class="index-list">
-      <div class="index-row" data-reveal>
-        <div class="index-thumb"><img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=300&q=80" alt="Full home interior" /></div>
-        <div>
-          <h3 class="serif">Full Home Interior</h3>
-          <p>Turnkey packages covering every room, planned and delivered end to end.</p>
-        </div>
-        <span class="spec">Type — Residential</span>
-      </div>
-      <div class="index-row" data-reveal>
-        <div class="index-thumb"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=300&q=80" alt="Modular kitchen" /></div>
-        <div>
-          <h3 class="serif">Modular Interiors</h3>
-          <p>Kitchens, wardrobes and storage built for how you actually live.</p>
-        </div>
-        <span class="spec">Type — Fitted</span>
-      </div>
-      <div class="index-row" data-reveal>
-        <div class="index-thumb"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=300&q=80" alt="Office interior" /></div>
-        <div>
-          <h3 class="serif">Office Interiors</h3>
-          <p>Workspaces that feel considered, not just furnished.</p>
-        </div>
-        <span class="spec">Type — Commercial</span>
-      </div>
-      <div class="index-row" data-reveal>
-        <div class="index-thumb"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=300&q=80" alt="Renovation interior" /></div>
-        <div>
-          <h3 class="serif">Renovations</h3>
-          <p>Elevate an existing space without starting from zero.</p>
-        </div>
-        <span class="spec">Type — Refit</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VR — the differentiator, annotated like a spec sheet -->
-<section class="on-ink" id="vr">
-  <div class="bleed vr-image marks" data-reveal>
-    <span class="mk-tr"></span><span class="mk-br"></span>
-    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" alt="VR interior visualisation" />
-    <span class="vr-image-tag mono">Full VR Walkthrough — Not A Render</span>
-  </div>
-  <div class="frame vr-body">
     <span class="tag">Virtual Reality Interiors</span>
-    <h2 class="vr-title serif" data-reveal>Walk through your home <em>before it exists.</em></h2>
-    <p class="vr-copy" data-reveal>A complete VR walkthrough of your 2BHK, 3BHK and above. Layout, furniture, colour, lighting, material and décor — finalised before execution begins, not after.</p>
+    <h2 class="section-h serif" data-reveal>See it, <em>before it's built.</em></h2>
+    <p class="section-lead" data-reveal>Drag to compare a concept render against the VR walkthrough your design team actually builds — the version you approve before a single wall moves.</p>
+  </div>
+
+  <div class="compare-wrap" data-reveal>
+    <div class="compare" id="compareSlider">
+      <img class="compare-before" src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1600&q=80" alt="Concept render" />
+      <img class="compare-after" id="compareAfter" src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1600&q=80" alt="VR walkthrough" />
+      <div class="compare-handle" id="compareHandle"></div>
+      <span class="compare-label left">Concept</span>
+      <span class="compare-label right">VR Walkthrough</span>
+      <input type="range" min="0" max="100" value="50" class="compare-range" id="compareRange" aria-label="Compare concept and VR walkthrough" />
+    </div>
+  </div>
+
+  <div class="frame">
     <div class="vr-specs" data-reveal>
       <span class="dim">50+ Homes Designed</span>
       <span class="dim">₹10L+ Ideal Budget</span>
@@ -123,60 +95,80 @@
   </div>
 </section>
 
-<!-- Gallery -->
-<section class="pad-lg on-vellum" id="gallery">
+<!-- Case Study — one real project told as a narrative, not a caption grid -->
+<section class="pad-lg" id="case">
   <div class="frame">
-    <span class="tag">Recent Work</span>
+    <span class="tag">Case Study</span>
+    <h2 class="section-h serif" data-reveal>Inside the <em>Amorapolis 3BHK.</em></h2>
   </div>
-  <div class="gallery-bleed">
-    <div class="plate-pair">
-      <div>
-        <div class="plate tall marks" data-reveal>
-          <span class="mk-tr"></span><span class="mk-br"></span>
-          <img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=1200&q=80" alt="3BHK Wagholi" />
-        </div>
-        <div class="plate-caption"><b>3BHK, Wagholi</b><span>1,280 Sq Ft</span></div>
-      </div>
-      <div>
-        <div class="plate wide marks" data-reveal>
-          <span class="mk-tr"></span><span class="mk-br"></span>
-          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="3BHK Hadapsar interior" />
-        </div>
-        <div class="plate-caption"><b>3BHK, Hadapsar</b><span>1,340 Sq Ft</span></div>
-      </div>
+
+  <div class="case-block">
+    <div class="case-media marks" data-reveal>
+      <span class="mk-tr"></span><span class="mk-br"></span>
+      <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1400&q=80" alt="Amorapolis living room before" />
+    </div>
+    <div class="frame case-text" data-reveal>
+      <span class="case-step">01 — The Brief</span>
+      <p>A young family wanted their 3BHK in Amorapolis to feel bright and unmistakably theirs — without losing the practicality a home with kids actually needs.</p>
+    </div>
+  </div>
+
+  <div class="case-block reverse">
+    <div class="case-media marks" data-reveal>
+      <span class="mk-tr"></span><span class="mk-br"></span>
+      <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1400&q=80" alt="Amorapolis design approach" />
+    </div>
+    <div class="frame case-text" data-reveal>
+      <span class="case-step">02 — The Approach</span>
+      <p>A full VR walkthrough let the Chouhan family edit layout, colour and material choices themselves before a single cabinet was ordered — three revisions, zero surprises on site.</p>
+    </div>
+  </div>
+
+  <div class="case-block">
+    <div class="case-media marks" data-reveal>
+      <span class="mk-tr"></span><span class="mk-br"></span>
+      <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1400&q=80" alt="Amorapolis finished result" />
+    </div>
+    <div class="frame case-text" data-reveal>
+      <span class="case-step">03 — The Result</span>
+      <p class="case-quote">"Feels like our personality in every corner."</p>
+      <p>Handed over in 8 weeks, on budget — a home the Chouhans describe as calm, warm, and entirely their own.</p>
     </div>
   </div>
 </section>
 
-<!-- Testimonials -->
-<section class="on-ink">
+<!-- What Clients Say — a scrollable carousel, not stacked cards -->
+<section class="pad-lg">
   <div class="frame">
-    <div class="testimony" data-reveal>
-      <div class="testimony-name">Chouhan Family</div>
-      <div>
-        <p class="testimony-quote">Feels like our personality in every corner.</p>
-        <p class="testimony-body">A clean, modern home with warm details and calm corners for the whole family to unwind together.</p>
-      </div>
-    </div>
-    <div class="testimony" data-reveal>
-      <div class="testimony-name">Desai Family</div>
-      <div>
+    <span class="tag">What Clients Say</span>
+  </div>
+  <div class="carousel-wrap" data-reveal>
+    <div class="carousel" id="testiCarousel">
+      <div class="carousel-item">
         <p class="testimony-quote">Elegant, bright and surprisingly practical.</p>
         <p class="testimony-body">A home that feels premium yet welcoming — stylish spaces, a beautiful kitchen and corners made for family time.</p>
+        <div class="testimony-name">Desai Family</div>
       </div>
-    </div>
-    <div class="testimony" data-reveal>
-      <div class="testimony-name">Deshmukh Family</div>
-      <div>
+      <div class="carousel-item">
         <p class="testimony-quote">Every room has its own story now.</p>
         <p class="testimony-body">Soft tones, thoughtful details and spaces that feel personal — from quiet corners to playful areas for the kids.</p>
+        <div class="testimony-name">Deshmukh Family</div>
       </div>
+      <div class="carousel-item">
+        <p class="testimony-quote">Feels like our personality in every corner.</p>
+        <p class="testimony-body">A clean, modern home with warm details and calm corners for the whole family to unwind together.</p>
+        <div class="testimony-name">Chouhan Family</div>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button id="carouselPrev" aria-label="Previous">←</button>
+      <button id="carouselNext" aria-label="Next">→</button>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="pad-lg on-vellum" id="faq">
+<section class="pad-lg" id="faq">
   <div class="frame">
     <span class="tag">Questions</span>
     <div class="faq-list">
@@ -205,7 +197,7 @@
 </section>
 
 <!-- Close -->
-<section class="close-section on-ink" id="contact">
+<section class="close-section" id="contact">
   <div class="frame">
     <h2 class="close-title serif" data-reveal>Let's design a home <br /><em>that feels right.</em></h2>
     <p class="close-sub" data-reveal>Thoughtful interiors, clear timelines, execution done right.</p>
@@ -216,7 +208,7 @@
   </div>
 </section>
 
-<footer class="on-vellum">
+<footer>
   <div class="frame">
     <div class="title-block">
       <div class="tb-cell">
@@ -224,9 +216,9 @@
       </div>
       <div class="tb-cell">
         <label>Studio</label>
-        <a href="#work">Services</a>
+        <a href="#work">Collection</a>
         <a href="#vr">VR Design</a>
-        <a href="#gallery">Work</a>
+        <a href="#case">Case Study</a>
       </div>
       <div class="tb-cell">
         <label>Contact</label>
@@ -250,6 +242,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/interactive.js"></script>
 <script src="js/chatbot.js"></script>
 </body>
 </html>
