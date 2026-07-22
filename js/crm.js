@@ -33,8 +33,8 @@
       .map(
         (l) => `
       <div class="lead-row">
-        <div class="lead-field"><label>Contact</label><span>${l.phone || l.email || 'Unknown'}</span></div>
-        <div class="lead-field"><label>Source</label><span>${l.source}</span></div>
+        <div class="lead-field"><label>Name</label><span>${l.name || '—'}</span></div>
+        <div class="lead-field"><label>Contact</label><span>${l.phone || l.email || 'See transcript'}</span></div>
         <div class="lead-field"><label>Captured</label><span>${timeAgo(l.time)}</span></div>
         <div class="lead-badge">New Lead</div>
       </div>`

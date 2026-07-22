@@ -20,13 +20,35 @@ YOUR JOB:
 - Never invent pricing numbers. Never make up services InterioArty doesn't offer.
 - Keep tone premium but warm and human, not corporate or robotic.`;
 
-function extractLead(messages) {
-  const text = messages.map((m) => m.content).join(' ');
-  const phoneMatch = text.match(/(\+?91[\s-]?)?[6-9]\d{9}\b/);
-  const emailMatch = text.match(/[\w.+-]+@[\w-]+\.[\w.-]+/);
+const CONFIRM_PHRASES = [
+  "i've got that noted",
+  'ive got that noted',
+  'design team will',
+  'reach out to you shortly',
+  'reach out to you soon',
+];
+
+function extractLead(messages, reply) {
+  // Only scan what the visitor actually typed — scanning assistant replies
+  // too would risk matching InterioArty's own listed phone/email as if it
+  // were the lead's.
+  const userText = messages
+    .filter((m) => m.role === 'user')
+    .map((m) => m.content)
+    .join(' ');
+
+  const phoneMatch = userText.match(/(?:\+?91[\s-]?)?[6-9]\d{2}[\s-]?\d{3}[\s-]?\d{4}\b/);
+  const emailMatch = userText.match(/[\w.+-]+@[\w-]+\.[\w.-]+/);
+  const nameMatch = userText.match(/\b(?:i'?m|i am|this is|my name is)\s+([A-Z][a-zA-Z]+)/i);
+
+  const replyLower = (reply || '').toLowerCase();
+  const qualified = CONFIRM_PHRASES.some((phrase) => replyLower.includes(phrase));
+
   return {
-    phone: phoneMatch ? phoneMatch[0] : null,
+    phone: phoneMatch ? phoneMatch[0].replace(/[\s-]/g, '') : null,
     email: emailMatch ? emailMatch[0] : null,
+    name: nameMatch ? nameMatch[1] : null,
+    qualified,
   };
 }
 
@@ -56,11 +78,12 @@ module.exports = async (req, res) => {
     const apiKey = process.env.GROQ_API_KEY;
 
     if (!apiKey) {
+      const fallbackReply =
+        "Thanks for reaching out! I'm currently running in demo mode without a live AI key connected. Once configured, I'll be able to answer questions about VR walkthroughs, pricing, and timelines instantly. Could I grab your name and phone number so our design team can call you?";
       res.status(200).json({
-        reply:
-          "Thanks for reaching out! I'm currently running in demo mode without a live AI key connected. Once configured, I'll be able to answer questions about VR walkthroughs, pricing, and timelines instantly. Could I grab your name and phone number so our design team can call you?",
+        reply: fallbackReply,
         demoMode: true,
-        lead: extractLead(messages),
+        lead: extractLead(messages, fallbackReply),
       });
       return;
     }
@@ -90,7 +113,7 @@ module.exports = async (req, res) => {
 
     res.status(200).json({
       reply,
-      lead: extractLead(messages),
+      lead: extractLead(messages, reply),
     });
   } catch (err) {
     res.status(500).json({ error: 'Server error', detail: String(err) });

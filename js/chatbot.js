@@ -122,7 +122,7 @@
       state.messages.push({ role: 'assistant', content: data.reply });
       renderMessages();
 
-      if (data.lead && (data.lead.phone || data.lead.email) && !state.leadCaptured) {
+      if (data.lead && (data.lead.phone || data.lead.email || data.lead.name || data.lead.qualified) && !state.leadCaptured) {
         state.leadCaptured = true;
         broadcastLead(data.lead);
       }
@@ -139,6 +139,7 @@
   function broadcastLead(lead) {
     const record = {
       id: Date.now(),
+      name: lead.name || '',
       phone: lead.phone || '',
       email: lead.email || '',
       source: 'Website Chatbot',
