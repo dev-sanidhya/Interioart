@@ -38,8 +38,22 @@ Full live WhatsApp + Instagram automation and real CRM integration were ruled ou
 - Caught and fixed a gap: `api/chat.js` had been written locally but never actually committed/pushed in an earlier session — now committed.
 - All commits pushed to `origin main` on github.com/dev-sanidhya/Interioart.
 
+## Design pivot (2026-07-23, demo day)
+User flagged that the palette + Instrument Serif heading font looked too close to Aperture (this repo's sibling marketing site, which also uses Instrument Serif + dark/amber tones) — read as a generic AI-template look, not something distinct. Also called out the services/gallery/testimonials sections as "rubbish" (generic SaaS list-with-icon-circles pattern, star ratings). Hero + motion were kept as-is (explicitly approved).
+
+Fix: pulled real computed styles from romanandwilliams.com (not rwguild.com subpage — actual R&W Guild homepage) via browser inspection rather than guessing. Found: warm stone/off-white backgrounds (~#f1efe7), near-black ink text, Lyon Display serif, minimal color, hairline dividers, no rounded-pill/card decoration.
+
+Rebuilt with:
+- Fonts: Newsreader (serif, has proper italic, distinct from Instrument Serif) + Archivo (sans) — replaces Fraunces/Instrument Serif + Inter/Space Grotesk entirely, confirmed zero overlap with Aperture's stack (Instrument Serif + Manrope + JetBrains Mono) via grep.
+- Palette: warm stone (`#f1efe7`) / ink (`#17140f`) / muted terracotta accent (`#9c5330`) — editorial gallery tones, not SaaS dark+brand-color.
+- Layout rhythm: alternating dark/light sections (dark hero → dark marquee → light about/services/vr/gallery → dark testimonials pull-quotes → light FAQ → dark CTA → light footer), matching print-editorial pacing instead of one flat tone.
+- Services: rebuilt from icon-circle list into a magazine "spread" — alternating large image + text rows, each service now has real photography.
+- Gallery: captions moved below image as catalog/museum-label style instead of hover-overlay.
+- Testimonials: removed star ratings (too generic/salesy for this brand), now large italic pull-quotes on a dark section.
+- Nav: switched from mix-blend-mode trick to a proper frosted stone bar that only appears once scrolled past the hero (threshold tied to viewport height in main.js), so it reads correctly against both the dark hero and light body sections.
+
 ## Next steps
 1. User to import repo into Vercel and set `GROQ_API_KEY` (same key already verified working locally) as an env var.
-2. Deploy, grab the `*.vercel.app` link, send via WhatsApp ahead of the 11:30 AM demo.
+2. Deploy, grab the `*.vercel.app` link, send via WhatsApp ahead of the 11:30 AM demo (today).
 3. Walk through demo script in README.md before the call.
 4. After the call: capture what the client actually reacted to / objected to here for the next session.
