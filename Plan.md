@@ -95,6 +95,15 @@ New approach, grounded in the skill's actual guidance (ground the design in the 
 
 CRM: added `api/summarize-lead.js` — a second Groq call (JSON mode, temperature 0.2) that reads the full transcript and extracts structured fields (name, phone, email, projectType, bhk, budget, timeline, plain-English summary) rather than relying on regex alone. `chatbot.js` now saves the lead immediately on capture (`summarizing: true`), fires the summarization call in the background, then patches the same localStorage record and re-broadcasts once it resolves. CRM rebuilt as expandable cards (click a row to open) showing the AI summary, extracted specs as dimension-style tags, and the full transcript — verified end-to-end with a live Groq call (test conversation: name/BHK/budget/phone all correctly extracted).
 
+## Structural rebuild (2026-07-23, later still)
+User called out that every prior "redesign" was actually a CSS reskin of the same six sections, same copy, same recycled stock photos — a fair criticism given the whole history above. Also asked for genuine UX patterns borrowed from the four reference sites given across the session (rwguild.com, framer.com, romanandwilliams.com, rolex.com), and "only one color throughout."
+
+Response:
+- Replaced every section past the hero. Old: Statement → Services index → VR badge section → 2-image gallery → stacked testimonial cards. New: **The Collection** (click-through tabs that swap a large image + copy — no page reload), **See The Difference** (a real drag-to-compare slider between a concept render and the VR walkthrough, built with `clip-path`, not description text), **Case Study** (a 3-step narrative on one specific real project — the Amorapolis 3BHK — instead of generic captions), **testimonial carousel** (horizontal scroll-snap with prev/next, not stacked blocks).
+- New photography throughout — every image ID is one not used in any earlier iteration (verified live before use), specifically to stop the "just a reskin" feeling.
+- Color: removed the alternating dark/light section rhythm entirely. Every section past the hero is now the same flat white — the hero itself keeps its photography (not a second flat color, so left alone) but nothing else uses a second background color.
+- Caught and fixed a real bug during build: the compare slider's first implementation resized a width-percentage wrapper, which squishes the image instead of clipping it — switched to `clip-path`. Also found that `scroll-snap-type` cancels animated `scrollLeft` changes (both native smooth-scroll and GSAP tweens got snapped back mid-flight) — carousel buttons now jump instantly instead, which sidesteps the conflict entirely.
+
 ## Next steps
 1. User to import repo into Vercel and set `GROQ_API_KEY` (same key already verified working locally) as an env var.
 2. Deploy, grab the `*.vercel.app` link, send via WhatsApp ahead of the 11:30 AM demo (today).
