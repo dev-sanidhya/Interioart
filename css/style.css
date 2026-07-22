@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700&display=swap');
 
 :root {
-  --ink: #17140f;
-  --stone: #f1efe7;
-  --stone-dim: #e3ded0;
-  --line: #dcd6c6;
-  --line-on-dark: rgba(241, 239, 231, 0.16);
-  --accent: #9c5330;
-  --accent-soft: #cf9169;
+  --ink: #1a1310;
+  --stone: #f7f1e7;
+  --stone-dim: #ece2d2;
+  --line: #e0d5c1;
+  --line-on-dark: rgba(247, 241, 231, 0.16);
+  --accent: #7a1530;
+  --accent-soft: #c98194;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -85,7 +85,7 @@ img {
 
 .nav.scrolled {
   padding: 16px 6vw;
-  background: rgba(241, 239, 231, 0.86);
+  background: rgba(247, 241, 231, 0.86);
   backdrop-filter: blur(14px);
   color: var(--ink);
   border-bottom: 1px solid var(--line);
@@ -163,7 +163,7 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(23, 20, 15, 0.35) 0%, rgba(23, 20, 15, 0.15) 40%, rgba(23, 20, 15, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(26, 19, 16, 0.35) 0%, rgba(26, 19, 16, 0.15) 40%, rgba(26, 19, 16, 0.94) 100%);
 }
 
 .hero-content {
@@ -210,7 +210,7 @@ img {
   max-width: 460px;
   font-size: 1.02rem;
   line-height: 1.6;
-  color: rgba(241, 239, 231, 0.68);
+  color: rgba(247, 241, 231, 0.68);
   font-weight: 400;
 }
 
@@ -227,7 +227,7 @@ img {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(241, 239, 231, 0.45);
+  color: rgba(247, 241, 231, 0.45);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -236,7 +236,7 @@ img {
 .scroll-line {
   width: 1px;
   height: 40px;
-  background: rgba(241, 239, 231, 0.25);
+  background: rgba(247, 241, 231, 0.25);
   position: relative;
   overflow: hidden;
 }
@@ -274,7 +274,7 @@ img {
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(241, 239, 231, 0.5);
+  color: rgba(247, 241, 231, 0.5);
 }
 
 /* ---------- Section shells ---------- */
@@ -335,7 +335,7 @@ section {
   font-family: 'Newsreader', serif;
   font-style: italic;
   font-size: 1.25rem;
-  color: rgba(241, 239, 231, 0.42);
+  color: rgba(247, 241, 231, 0.42);
   display: flex;
   align-items: center;
   gap: 40px;
@@ -365,7 +365,7 @@ section {
   margin-top: 30px;
   font-size: 1.05rem;
   line-height: 1.75;
-  color: rgba(23, 20, 15, 0.68);
+  color: rgba(26, 19, 16, 0.68);
   max-width: 46ch;
 }
 
@@ -470,7 +470,7 @@ section {
   margin-top: 18px;
   font-size: 0.98rem;
   line-height: 1.7;
-  color: rgba(23, 20, 15, 0.62);
+  color: rgba(26, 19, 16, 0.62);
   max-width: 38ch;
 }
 
@@ -515,7 +515,7 @@ section {
   margin-top: 22px;
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(23, 20, 15, 0.62);
+  color: rgba(26, 19, 16, 0.62);
   max-width: 48ch;
 }
 
@@ -584,7 +584,7 @@ section {
   bottom: 20px;
   left: 20px;
   right: 20px;
-  background: rgba(23, 20, 15, 0.88);
+  background: rgba(26, 19, 16, 0.88);
   backdrop-filter: blur(10px);
   padding: 16px 18px;
   color: var(--stone);
@@ -650,7 +650,7 @@ section {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(23, 20, 15, 0.55);
+  color: rgba(26, 19, 16, 0.55);
 }
 
 .gallery-label b {
@@ -691,7 +691,7 @@ section {
 .testi-body {
   margin-top: 20px;
   font-size: 0.88rem;
-  color: rgba(241, 239, 231, 0.5);
+  color: rgba(247, 241, 231, 0.5);
   line-height: 1.65;
 }
 
@@ -751,7 +751,7 @@ section {
   padding-bottom: 26px;
   font-size: 0.95rem;
   line-height: 1.7;
-  color: rgba(23, 20, 15, 0.6);
+  color: rgba(26, 19, 16, 0.6);
   max-width: 60ch;
 }
 
@@ -776,7 +776,7 @@ section {
 .cta-sub {
   margin-top: 22px;
   font-size: 1.02rem;
-  color: rgba(241, 239, 231, 0.55);
+  color: rgba(247, 241, 231, 0.55);
 }
 
 .cta-buttons {
@@ -844,14 +844,14 @@ footer {
   font-size: 0.68rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: rgba(23, 20, 15, 0.42);
+  color: rgba(26, 19, 16, 0.42);
   margin-bottom: 16px;
 }
 
 .footer-col a, .footer-col p {
   display: block;
   font-size: 0.86rem;
-  color: rgba(23, 20, 15, 0.7);
+  color: rgba(26, 19, 16, 0.7);
   margin-bottom: 10px;
 }
 
@@ -861,7 +861,7 @@ footer {
   padding-top: 22px;
   border-top: 1px solid var(--line);
   font-size: 0.74rem;
-  color: rgba(23, 20, 15, 0.4);
+  color: rgba(26, 19, 16, 0.4);
 }
 
 /* ---------- Reveal animation base ---------- */
@@ -886,7 +886,7 @@ footer {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(156, 83, 48, 0.4);
+  box-shadow: 0 12px 30px rgba(122, 21, 48, 0.4);
   transition: transform 0.3s var(--ease);
 }
 
@@ -958,7 +958,7 @@ footer {
 
 .chat-head-info span {
   font-size: 0.7rem;
-  color: rgba(241, 239, 231, 0.5);
+  color: rgba(247, 241, 231, 0.5);
   display: flex;
   align-items: center;
   gap: 6px;
