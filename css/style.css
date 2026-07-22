@@ -206,48 +206,47 @@ section { position: relative; background: var(--vellum); color: var(--ink); }
 .pad-lg { padding: var(--sp-6) 0; }
 
 /* ==========================================================================
-   The Collection — interactive tabs, not a static list
+   Collections — each service gets real presence, not a cramped list
    ========================================================================== */
-.ctabs {
-  margin-top: var(--sp-4);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: var(--sp-3);
-}
+.collections { margin-top: var(--sp-4); }
 
-.ctab {
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: rgba(33, 33, 33, 0.45);
-  background: none;
-  border: none;
-  padding: 8px 0;
-  cursor: pointer;
-  position: relative;
-}
-.ctab + .ctab { margin-left: var(--sp-3); }
-.ctab::after {
-  content: ''; position: absolute; left: 0; bottom: -1px; width: 0; height: 2px;
-  background: var(--ink); transition: width 0.3s var(--ease);
-}
-.ctab.active { color: var(--ink); font-weight: 700; }
-.ctab.active::after { width: 100%; }
-
-.cstage {
-  margin-top: var(--sp-4);
+.collection-module {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: var(--sp-4);
+  grid-template-columns: 1.2fr 1fr;
   align-items: center;
-  transition: opacity 0.2s ease;
+  gap: var(--sp-4);
+  padding: var(--sp-5) 0;
+  border-top: 1px solid var(--line);
 }
-.cstage-media { aspect-ratio: 4/3; overflow: hidden; }
-.cstage-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(45%) contrast(1.05); transition: opacity 0.3s ease; }
-.cstage-copy p { font-size: var(--t-lead); font-weight: 300; line-height: 1.65; color: rgba(33,33,33,0.7); }
-.cstage-copy .dim { margin-top: var(--sp-3); }
+.collections .collection-module:last-child { border-bottom: 1px solid var(--line); }
+.collection-module.reverse { direction: rtl; }
+.collection-module.reverse > * { direction: ltr; }
+
+.collection-media { aspect-ratio: 4/3; overflow: hidden; }
+.collection-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(45%) contrast(1.05);
+  transition: transform 1.8s var(--ease);
+}
+.collection-module:hover .collection-media img { transform: scale(1.035); }
+
+.collection-text .tag { display: block; margin-bottom: var(--sp-2); }
+.collection-text h3 {
+  font-family: var(--sans); font-weight: 700;
+  font-size: clamp(1.8rem, 3.6vw, 3rem);
+  letter-spacing: -0.015em;
+}
+.collection-text p {
+  margin-top: var(--sp-2); font-size: var(--t-lead); font-weight: 300;
+  line-height: 1.6; color: rgba(33, 33, 33, 0.65); max-width: 38ch;
+}
+.collection-link {
+  margin-top: var(--sp-3); display: inline-block;
+  font-family: var(--sans); font-size: 0.85rem; font-weight: 700;
+  border-bottom: 1px solid currentColor; padding-bottom: 3px;
+  background: none; border-left: none; border-right: none; border-top: none;
+  color: inherit; cursor: pointer;
+}
 
 /* ==========================================================================
    See The Difference — a real drag compare slider
@@ -452,7 +451,7 @@ footer { padding: var(--sp-4) 0 var(--sp-3); }
 }
 .chat-head-info b { font-family: var(--sans); font-weight: 700; font-size: 0.95rem; display: block; }
 .chat-head-info span { font-family: var(--mono); font-size: 0.65rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 6px; }
-.chat-head-info span::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #6bbf6b; }
+.chat-head-info span::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 .chat-messages { flex: 1; overflow-y: auto; padding: var(--sp-2) var(--sp-3); display: flex; flex-direction: column; gap: var(--sp-2); }
 .msg { max-width: 84%; padding: 10px 14px; font-size: 0.86rem; font-weight: 300; line-height: 1.5; }
 .msg.bot { align-self: flex-start; background: rgba(33,33,33,0.05); }
@@ -486,7 +485,7 @@ footer { padding: var(--sp-4) 0 var(--sp-3); }
    ========================================================================== */
 @media (max-width: 900px) {
   .nav-links { display: none; }
-  .cstage { grid-template-columns: 1fr; }
+  .collection-module, .collection-module.reverse { grid-template-columns: 1fr; direction: ltr; }
   .case-block, .case-block.reverse { grid-template-columns: 1fr; direction: ltr; }
   .case-text { padding: var(--sp-3) 6vw 0; }
   .title-block { grid-template-columns: 1fr 1fr; }

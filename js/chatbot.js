@@ -8,7 +8,7 @@
       {
         role: 'assistant',
         content:
-          "Hi, I'm Arty 👋 — InterioArty's design assistant. Ask me about VR walkthroughs, pricing, timelines, or anything about your space.",
+          "Hi, I'm Arty 👋, InterioArty's design assistant. Ask me about VR walkthroughs, pricing, timelines, or anything about your space.",
       },
     ],
     leadCaptured: false,
@@ -189,7 +189,7 @@
       const record = existing.find((l) => l.id === id);
       if (record) {
         record.summarizing = false;
-        record.summary = 'AI summary failed — see transcript.';
+        record.summary = 'AI summary failed. See transcript.';
         saveLead(record);
         if (bc) bc.postMessage(record);
       }

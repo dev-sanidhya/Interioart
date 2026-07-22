@@ -1,4 +1,4 @@
-// Smooth scroll (Lenis) — Framer/Linear-style buttery scroll
+// Smooth scroll (Lenis): Framer/Linear-style buttery scroll
 const lenis = new Lenis({
   duration: 1.15,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -18,7 +18,7 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
-// Nav shrink on scroll — switch once the hero has mostly scrolled past
+// Nav shrink on scroll: switch once the hero has mostly scrolled past
 const nav = document.getElementById('nav');
 lenis.on('scroll', ({ scroll }) => {
   nav.classList.toggle('scrolled', scroll > window.innerHeight * 0.7);

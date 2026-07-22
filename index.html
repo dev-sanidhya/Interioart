@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>InterioArty — Interior Design Studio, Pune</title>
+<title>InterioArty: Interior Design Studio, Pune</title>
 <meta name="description" content="Full home interiors, modular kitchens, office interiors and VR walkthroughs in Pune." />
 <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -14,9 +14,9 @@
 <nav class="nav" id="nav">
   <div class="nav-logo">InterioArty</div>
   <ul class="nav-links">
-    <li><a href="#work">Collection</a></li>
+    <li><a href="#collections">Collections</a></li>
     <li><a href="#vr">VR Design</a></li>
-    <li><a href="#case">Case Study</a></li>
+    <li><a href="#project">Featured Project</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Enquire</a>
@@ -29,7 +29,7 @@
   <div class="hero-content">
     <div class="hero-eyebrow"><span class="dot"></span> Pune's VR-First Interior Studio</div>
     <h1 class="hero-title serif" data-reveal>Spaces that feel <em>like you,</em> before a single wall moves.</h1>
-    <p class="hero-sub" data-reveal>InterioArty designs full homes, modular kitchens and offices across Pune — then lets you walk through the finished space in VR before you approve a thing.</p>
+    <p class="hero-sub" data-reveal>InterioArty designs full homes, modular kitchens and offices across Pune, then lets you walk through the finished space in VR before you approve a thing.</p>
     <div class="hero-foot">
       <div class="hero-scroll"><div class="scroll-line"></div> Scroll</div>
       <div class="hero-stats">
@@ -41,37 +41,78 @@
   </div>
 </section>
 
-<!-- The Collection — an interactive selector, not a static list -->
-<section class="pad-lg" id="work">
+<!-- Studio statement: one line, let the collections below do the talking -->
+<section class="pad-lg">
   <div class="frame">
-    <span class="tag">The Collection</span>
-    <h2 class="section-h serif" data-reveal>One studio, <em>four disciplines.</em></h2>
+    <span class="tag">The Studio</span>
+    <h2 class="section-h serif" data-reveal>We design homes around <em>how you actually live.</em></h2>
+  </div>
+</section>
 
-    <div class="ctabs" role="tablist" data-reveal>
-      <button class="ctab active" data-key="home">Full Home</button>
-      <button class="ctab" data-key="modular">Modular</button>
-      <button class="ctab" data-key="office">Office</button>
-      <button class="ctab" data-key="reno">Renovation</button>
+<!-- Collections: four services, each with real presence -->
+<section id="collections">
+  <div class="frame">
+    <span class="tag">Collections</span>
+    <h2 class="section-h serif" data-reveal>One studio, <em>four disciplines.</em></h2>
+  </div>
+
+  <div class="collections">
+    <div class="collection-module" data-reveal>
+      <div class="collection-media">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80" alt="Full home interior" />
+      </div>
+      <div class="frame collection-text">
+        <span class="tag">Residential</span>
+        <h3>Full Home Interior</h3>
+        <p>Turnkey packages covering every room, planned, sourced and delivered end to end, with nothing left for you to chase.</p>
+        <button class="collection-link" onclick="window.ArtyChat && window.ArtyChat.open('Tell me about full home interiors')">Explore full home interiors</button>
+      </div>
     </div>
 
-    <div class="cstage" data-reveal>
-      <div class="cstage-media">
-        <img id="cImg" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80" alt="Full home interior" />
+    <div class="collection-module reverse" data-reveal>
+      <div class="collection-media">
+        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1400&q=80" alt="Modular kitchen" />
       </div>
-      <div class="cstage-copy">
-        <p id="cText">Turnkey packages covering every room — planned, sourced and delivered end to end, with nothing left for you to chase.</p>
-        <span id="cSpec" class="dim">Type — Residential</span>
+      <div class="frame collection-text">
+        <span class="tag">Fitted</span>
+        <h3>Modular Interiors</h3>
+        <p>Kitchens, wardrobes and storage fitted to how you actually move through your home, not a catalogue layout.</p>
+        <button class="collection-link" onclick="window.ArtyChat && window.ArtyChat.open('Tell me about modular interiors')">Explore modular interiors</button>
+      </div>
+    </div>
+
+    <div class="collection-module" data-reveal>
+      <div class="collection-media">
+        <img src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=1400&q=80" alt="Office interior" />
+      </div>
+      <div class="frame collection-text">
+        <span class="tag">Commercial</span>
+        <h3>Office Interiors</h3>
+        <p>Workspaces built for focus and clients alike, considered rather than simply furnished.</p>
+        <button class="collection-link" onclick="window.ArtyChat && window.ArtyChat.open('Tell me about office interiors')">Explore office interiors</button>
+      </div>
+    </div>
+
+    <div class="collection-module reverse" data-reveal>
+      <div class="collection-media">
+        <img src="https://images.unsplash.com/photo-1524230507669-5ff97982bb5e?auto=format&fit=crop&w=1400&q=80" alt="Renovation interior" />
+      </div>
+      <div class="frame collection-text">
+        <span class="tag">Refit</span>
+        <h3>Renovations</h3>
+        <p>New life for rooms that already have good bones, elevated without starting from zero.</p>
+        <button class="collection-link" onclick="window.ArtyChat && window.ArtyChat.open('Tell me about renovations')">Explore renovations</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- See The Difference — a real interactive slider, not a description -->
+<!-- VR: the differentiator, told through a real interaction -->
 <section class="pad-lg" id="vr">
   <div class="frame">
     <span class="tag">Virtual Reality Interiors</span>
     <h2 class="section-h serif" data-reveal>See it, <em>before it's built.</em></h2>
-    <p class="section-lead" data-reveal>Drag to compare a concept render against the VR walkthrough your design team actually builds — the version you approve before a single wall moves.</p>
+    <p class="section-lead" data-reveal>Drag to compare a concept render against the VR walkthrough your design team actually builds: the version you approve before a single wall moves.</p>
   </div>
 
   <div class="compare-wrap" data-reveal>
@@ -95,10 +136,10 @@
   </div>
 </section>
 
-<!-- Case Study — one real project told as a narrative, not a caption grid -->
-<section class="pad-lg" id="case">
+<!-- Featured Project: one real project, told as a sequence -->
+<section class="pad-lg" id="project">
   <div class="frame">
-    <span class="tag">Case Study</span>
+    <span class="tag">Featured Project</span>
     <h2 class="section-h serif" data-reveal>Inside the <em>Amorapolis 3BHK.</em></h2>
   </div>
 
@@ -108,8 +149,8 @@
       <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1400&q=80" alt="Amorapolis living room before" />
     </div>
     <div class="frame case-text" data-reveal>
-      <span class="case-step">01 — The Brief</span>
-      <p>A young family wanted their 3BHK in Amorapolis to feel bright and unmistakably theirs — without losing the practicality a home with kids actually needs.</p>
+      <span class="case-step">01. The Brief</span>
+      <p>A young family wanted their 3BHK in Amorapolis to feel bright and unmistakably theirs, without losing the practicality a home with kids actually needs.</p>
     </div>
   </div>
 
@@ -119,8 +160,8 @@
       <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1400&q=80" alt="Amorapolis design approach" />
     </div>
     <div class="frame case-text" data-reveal>
-      <span class="case-step">02 — The Approach</span>
-      <p>A full VR walkthrough let the Chouhan family edit layout, colour and material choices themselves before a single cabinet was ordered — three revisions, zero surprises on site.</p>
+      <span class="case-step">02. The Approach</span>
+      <p>A full VR walkthrough let the Chouhan family edit layout, colour and material choices themselves before a single cabinet was ordered: three revisions, zero surprises on site.</p>
     </div>
   </div>
 
@@ -130,28 +171,28 @@
       <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1400&q=80" alt="Amorapolis finished result" />
     </div>
     <div class="frame case-text" data-reveal>
-      <span class="case-step">03 — The Result</span>
+      <span class="case-step">03. The Result</span>
       <p class="case-quote">"Feels like our personality in every corner."</p>
-      <p>Handed over in 8 weeks, on budget — a home the Chouhans describe as calm, warm, and entirely their own.</p>
+      <p>Handed over in eight weeks, on budget. A home the Chouhans describe as calm, warm and entirely their own.</p>
     </div>
   </div>
 </section>
 
-<!-- What Clients Say — a scrollable carousel, not stacked cards -->
+<!-- Client Voices: a scrollable carousel -->
 <section class="pad-lg">
   <div class="frame">
-    <span class="tag">What Clients Say</span>
+    <span class="tag">Client Voices</span>
   </div>
   <div class="carousel-wrap" data-reveal>
     <div class="carousel" id="testiCarousel">
       <div class="carousel-item">
         <p class="testimony-quote">Elegant, bright and surprisingly practical.</p>
-        <p class="testimony-body">A home that feels premium yet welcoming — stylish spaces, a beautiful kitchen and corners made for family time.</p>
+        <p class="testimony-body">A home that feels premium yet welcoming: stylish spaces, a beautiful kitchen and corners made for family time.</p>
         <div class="testimony-name">Desai Family</div>
       </div>
       <div class="carousel-item">
         <p class="testimony-quote">Every room has its own story now.</p>
-        <p class="testimony-body">Soft tones, thoughtful details and spaces that feel personal — from quiet corners to playful areas for the kids.</p>
+        <p class="testimony-body">Soft tones, thoughtful details and spaces that feel personal, from quiet corners to playful areas for the kids.</p>
         <div class="testimony-name">Deshmukh Family</div>
       </div>
       <div class="carousel-item">
@@ -174,7 +215,7 @@
     <div class="faq-list">
       <div class="faq-item" data-reveal>
         <button class="faq-q">Why hire a professional interior designer? <span class="plus">+</span></button>
-        <div class="faq-a"><p>A professional designer brings space planning, budget clarity and material knowledge — our focus is functionality, aesthetics and long-term value for modern homes.</p></div>
+        <div class="faq-a"><p>A professional designer brings space planning, budget clarity and material knowledge. Our focus is functionality, aesthetics and long-term value for modern homes.</p></div>
       </div>
       <div class="faq-item" data-reveal>
         <button class="faq-q">What services do you offer? <span class="plus">+</span></button>
@@ -190,7 +231,7 @@
       </div>
       <div class="faq-item" data-reveal>
         <button class="faq-q">Do you offer turnkey solutions? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Yes — end-to-end planning, execution, quality checks and final handover, all managed by our design team.</p></div>
+        <div class="faq-a"><p>Yes: end-to-end planning, execution, quality checks and final handover, all managed by our design team.</p></div>
       </div>
     </div>
   </div>
@@ -216,9 +257,9 @@
       </div>
       <div class="tb-cell">
         <label>Studio</label>
-        <a href="#work">Collection</a>
+        <a href="#collections">Collections</a>
         <a href="#vr">VR Design</a>
-        <a href="#case">Case Study</a>
+        <a href="#project">Featured Project</a>
       </div>
       <div class="tb-cell">
         <label>Contact</label>

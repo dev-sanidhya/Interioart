@@ -1,4 +1,4 @@
-const SUMMARY_PROMPT = `You are a CRM assistant reading a transcript between a website visitor and Arty, InterioArty's AI design consultant. Extract what the visitor actually said into structured fields. Never invent details that weren't mentioned — use null for anything not discussed.
+const SUMMARY_PROMPT = `You are a CRM assistant reading a transcript between a website visitor and Arty, InterioArty's AI design consultant. Extract what the visitor actually said into structured fields. Never invent details that weren't mentioned, use null for anything not discussed.
 
 Respond with ONLY a JSON object in this exact shape:
 {
@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
         bhk: null,
         budget: null,
         timeline: null,
-        summary: 'AI summary unavailable in demo mode — see the raw transcript below.',
+        summary: 'AI summary unavailable in demo mode. See the raw transcript below.',
       });
       return;
     }

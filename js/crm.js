@@ -54,7 +54,7 @@
     statToday.textContent = todayCount;
 
     if (!leads.length) {
-      listEl.innerHTML = `<div class="empty-state"><b>No leads yet</b>Open the website chatbot and have a quick conversation — qualified leads will appear here instantly, with an AI summary attached.</div>`;
+      listEl.innerHTML = `<div class="empty-state"><b>No leads yet</b>Open the website chatbot and have a quick conversation. Qualified leads will appear here instantly, with an AI summary attached.</div>`;
       return;
     }
 
@@ -64,9 +64,9 @@
         return `
       <div class="lead-card ${isOpen ? 'open' : ''}" data-id="${l.id}">
         <div class="lead-row" data-toggle="${l.id}">
-          <div class="lead-field"><label>Name</label><span>${escapeHtml(l.name) || '—'}</span></div>
-          <div class="lead-field"><label>Contact</label><span>${escapeHtml(l.phone || l.email) || '—'}</span></div>
-          <div class="lead-field"><label>Project</label><span>${escapeHtml(l.projectType) || '—'}</span></div>
+          <div class="lead-field"><label>Name</label><span>${escapeHtml(l.name) || 'N/A'}</span></div>
+          <div class="lead-field"><label>Contact</label><span>${escapeHtml(l.phone || l.email) || 'N/A'}</span></div>
+          <div class="lead-field"><label>Project</label><span>${escapeHtml(l.projectType) || 'N/A'}</span></div>
           <div class="lead-field"><label>Captured</label><span>${timeAgo(l.time)}</span></div>
           <div class="lead-badge ${l.summarizing ? 'pending' : ''}">${l.summarizing ? 'Summarizing…' : 'AI Summarized'}</div>
           <div class="lead-chevron">→</div>
