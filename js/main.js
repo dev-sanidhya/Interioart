@@ -18,10 +18,10 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
-// Nav shrink on scroll
+// Nav shrink on scroll — switch once the hero has mostly scrolled past
 const nav = document.getElementById('nav');
 lenis.on('scroll', ({ scroll }) => {
-  nav.classList.toggle('scrolled', scroll > 40);
+  nav.classList.toggle('scrolled', scroll > window.innerHeight * 0.7);
 });
 
 // Hero parallax
