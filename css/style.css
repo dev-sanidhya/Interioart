@@ -18,7 +18,7 @@
   --sans: 'Public Sans', 'Helvetica Neue', Arial, sans-serif;
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
 
-  --t-display: clamp(3.2rem, 8.4vw, 8.5rem);
+  --t-display: clamp(3rem, min(8vw, 9vh), 8rem);
   --t-h1: clamp(2.2rem, 4.8vw, 4.4rem);
   --t-h2: clamp(1.5rem, 2.6vw, 2.1rem);
   --t-lead: clamp(1.1rem, 1.5vw, 1.35rem);
@@ -132,9 +132,9 @@ button { font-family: inherit; }
   color: var(--ink);
   border-bottom: 1px solid var(--line);
 }
-.nav-logo { font-family: var(--sans); font-weight: 700; font-size: 1.1rem; letter-spacing: -0.01em; }
+.nav-logo { font-family: var(--sans); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em; }
 .nav-links { display: flex; gap: var(--sp-4); list-style: none; }
-.nav-links a { font-family: var(--sans); font-size: 0.8rem; font-weight: 400; letter-spacing: 0.02em; }
+.nav-links a { font-family: var(--sans); font-size: 0.9rem; font-weight: 400; letter-spacing: 0.02em; }
 .nav-cta {
   font-family: var(--sans); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em;
   border-bottom: 1px solid currentColor; padding-bottom: 2px;
@@ -146,6 +146,7 @@ button { font-family: inherit; }
 .hero {
   position: relative; height: 100vh; min-height: 680px;
   display: flex; flex-direction: column; justify-content: flex-end;
+  padding-top: 110px;
   overflow: hidden; background: var(--ink);
 }
 .hero-bg { position: absolute; inset: 0; z-index: 0; }

@@ -116,5 +116,4 @@
   });
 
   render();
-  setInterval(render, 5000);
 })();

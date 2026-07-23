@@ -11,7 +11,7 @@
           "Hi, I'm Arty 👋, InterioArty's design assistant. Ask me about VR walkthroughs, pricing, timelines, or anything about your space.",
       },
     ],
-    leadCaptured: false,
+    leadId: null,
   };
 
   function el(tag, cls, html) {
@@ -122,9 +122,16 @@
       state.messages.push({ role: 'assistant', content: data.reply });
       renderMessages();
 
-      if (data.lead && (data.lead.phone || data.lead.email || data.lead.name || data.lead.qualified) && !state.leadCaptured) {
-        state.leadCaptured = true;
-        broadcastLead(data.lead);
+      if (data.lead) {
+        const hasSignal = data.lead.phone || data.lead.email || data.lead.name || data.lead.qualified;
+        if (!state.leadId && hasSignal) {
+          createLead(data.lead);
+        } else if (state.leadId) {
+          // Conversation continued after the lead was created (e.g. phone
+          // number given after the name) — keep the record and transcript
+          // current instead of freezing them at the first qualifying signal.
+          updateLead(data.lead);
+        }
       }
     } catch (err) {
       hideTyping();
@@ -136,7 +143,7 @@
     }
   }
 
-  function broadcastLead(lead) {
+  function createLead(lead) {
     const record = {
       id: Date.now(),
       name: lead.name || '',
@@ -147,6 +154,26 @@
       transcript: state.messages.slice(),
       summarizing: true,
     };
+    state.leadId = record.id;
+    saveLead(record);
+    if (bc) bc.postMessage(record);
+    summarizeLead(record.id);
+  }
+
+  function updateLead(lead) {
+    const existing = JSON.parse(localStorage.getItem('interioarty_leads') || '[]');
+    const record = existing.find((l) => l.id === state.leadId);
+    if (!record) return;
+
+    // Fill in whatever wasn't known before; never blank out something we
+    // already had (e.g. a later message without a phone number shouldn't
+    // erase one given earlier).
+    record.name = record.name || lead.name || '';
+    record.phone = record.phone || lead.phone || '';
+    record.email = record.email || lead.email || '';
+    record.transcript = state.messages.slice();
+    record.summarizing = true;
+
     saveLead(record);
     if (bc) bc.postMessage(record);
     summarizeLead(record.id);
